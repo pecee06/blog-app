@@ -27,12 +27,15 @@ class DB{
         }
     }
 
-    async fetchAll({queries=[Query.equal("status","active")]}){
+    async fetchAll({queries=[]}){
         try {
             const res = this.databases.listDocuments(
                 env.dbId,
                 env.collectionId,
-                queries
+                [
+                    Query.equal("status","active"),
+                    ...queries
+                ]
             )
             return res
         } catch (error) {
