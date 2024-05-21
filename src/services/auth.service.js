@@ -1,4 +1,4 @@
-import { Client, Account, ID, OAuthProvider } from "appwrite";
+import { Client, Account, ID, OAuthProvider } from "appwrite"
 import env from "../../env"
 
 class Auth{
@@ -9,6 +9,7 @@ class Auth{
         this.client
         .setEndpoint(env.apiEndpoint)
         .setProject(env.projectId)
+        
         this.account = new Account(this.client)
     }
 
