@@ -15,6 +15,7 @@ class Auth{
     async signup({email="", password=""}){
         try {
             const res = await this.account.create(ID.unique(), email, password)
+            if (res) this.login({email, password})
             return res
         } catch (error) {
             throw error
