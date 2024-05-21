@@ -36,7 +36,7 @@ class Auth{
         }
     }
 
-    async getUser(){
+    async getCurrentUser(){
         try {
             const res = await this.account.get()
             return res

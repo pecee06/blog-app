@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom"
 import { UserProvider, BlogProvider } from "./contexts/contexts"
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
+import {authService} from "./services/services"
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [blogs, setBlogs] = useState([])
+  const [userData, setUserData] = useState({})
+  const [loading, setLoading] = useState(true)
 
   function login() {
     setLoggedIn(true)
@@ -29,10 +32,33 @@ const App = () => {
     ))
   },[])
 
+  // Checking whether the user is already logged in (from previous session)
+  useEffect(()=>{
+    authService.getCurrentUser()
+    .then(data => {
+      if (data){
+        setUserData(data)
+        login()
+      }
+      else logout()
+    })
+    .catch(err => {
+      console.error(err);
+    })
+    .finally(()=>{
+      setLoading(false)
+    })
+  },[])
+
   return (
-    <UserProvider value={{loggedIn, login, logout}}>
+    <UserProvider value={{loggedIn, login, logout, userData}}>
       <BlogProvider value={{blogs, addBlog, updateBlog, deleteBlog}}>
+      {
+        loading ?
+        <h1>Loading...</h1>
+        :
         <Outlet/>
+      }
       </BlogProvider>
     </UserProvider>
   )
