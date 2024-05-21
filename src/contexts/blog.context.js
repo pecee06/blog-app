@@ -3,6 +3,7 @@ import { createContext, useContext } from "react"
 const BlogContext = createContext({
     blogs: [
         // {
+        //     _id: "",
         //     title: "",
         //     content: "",
         //     status: "",
