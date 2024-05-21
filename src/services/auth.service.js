@@ -16,9 +16,8 @@ class Auth{
         try {
             const res = await this.account.create(ID.unique(), email, password)
             return res
-        } catch (err) {
-            console.error(err);
-            return false
+        } catch (error) {
+            throw error
         }
     }
 
@@ -30,9 +29,8 @@ class Auth{
         try {
             const res = await this.account.createEmailPasswordSession(email, password)
             return res
-        } catch (err) {
-            console.error(err);
-            return false
+        } catch (error) {
+            throw error
         }
     }
 
@@ -40,9 +38,8 @@ class Auth{
         try {
             const res = await this.account.get()
             return res
-        } catch (err) {
-            console.error(err);
-            return false
+        } catch (error) {
+            throw error
         }
     }
 
@@ -50,9 +47,8 @@ class Auth{
         try {
             const res = await this.account.updatePassword(newPassword, oldPassword)
             return res
-        } catch (err) {
-            console.error(err);
-            return false
+        } catch (error) {
+            throw error
         }
     }
 
@@ -60,9 +56,8 @@ class Auth{
         try {
             const res = await this.account.deleteSessions()
             return res
-        } catch (err) {
-            console.error(err);
-            return false
+        } catch (error) {
+            throw error
         }
     }
 }
