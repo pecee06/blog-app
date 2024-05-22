@@ -1,6 +1,7 @@
-const Button = ({label="", functionality=()=>{}}) => {
+const Button = ({children, label="", functionality=()=>{}, className="", ...props}) => {
   return (
-    <button className="focus:outline-0 py-2 px-5 rounded bg-violet-900 text-white text-lg uppercase font-bold hover:bg-purple-950 transition-all" onClick={functionality}>
+    <button className={`focus:outline-0 py-2 px-4 rounded bg-violet-700 text-white text-lg uppercase hover:bg-purple-800 transition-all ${className}`} onClick={functionality} {...props}>
+      {children}
       {label}
     </button>
   )
