@@ -1,0 +1,22 @@
+#hero-right{
+    background-image: url("../../assets/man-in-hoody.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: color-burn;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+#hero-circle{
+    border-radius: 50%;
+    top: -1.5rem;
+    left: -1.5rem;
+}
+
+#hero-left h2{
+    font-size: 16vmax;
+    line-height: 0.9;
+    overflow-y: hidden;
+}
