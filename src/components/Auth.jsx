@@ -5,6 +5,7 @@ import { googleIcon } from "../assets/assets";
 import authService from "../services/auth.service";
 import { useUserContext } from "../contexts/user.context";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const Auth = ({ label = "" }) => {
 	const { register, handleSubmit, setValue, formState } = useForm({
@@ -14,12 +15,16 @@ const Auth = ({ label = "" }) => {
 		},
 	});
 	const { errors } = formState;
-	const { login } = useUserContext();
+	const { login, setUserData } = useUserContext();
 	const navigate = useNavigate();
+	const emailRef = useRef(null);
+	const passRef = useRef(null);
+	const submitMailRef = useRef(null);
+	const submitGoogleRef = useRef(null);
 
 	return (
-		<Container className="flex flex-col gap-[5vw]">
-			<Logo/>
+		<Container className='flex flex-col gap-[5vw]'>
+			<Logo />
 			<div className='w-full mx-auto bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
 				<div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
 					<h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
@@ -30,6 +35,7 @@ const Auth = ({ label = "" }) => {
 					<form className='space-y-4 md:space-y-6' noValidate>
 						<div className='flex flex-col gap-1'>
 							<Input
+								ref={emailRef}
 								label='Email'
 								type='email'
 								{...register("email", {
@@ -48,6 +54,7 @@ const Auth = ({ label = "" }) => {
 
 						<div className='flex flex-col gap-1'>
 							<Input
+								ref={passRef}
 								label='Password'
 								type='password'
 								placeholder='••••••••'
@@ -66,13 +73,8 @@ const Auth = ({ label = "" }) => {
 							<p className='text-red-600'>{errors.email?.message}</p>
 						</div>
 
-						{/* <button
-									type='submit'
-									className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-								>
-									Sign in
-								</button> */}
 						<Button
+							ref={submitMailRef}
 							type='submit'
 							className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
 							label={label}
@@ -85,6 +87,7 @@ const Auth = ({ label = "" }) => {
 										})
 										.then((res) => {
 											if (res) {
+												setUserData(res)
 												login();
 												navigate("/");
 											}
@@ -105,6 +108,7 @@ const Auth = ({ label = "" }) => {
 										})
 										.then((res) => {
 											if (res) {
+												setUserData(res)
 												login();
 												navigate("/");
 											}
@@ -122,15 +126,15 @@ const Auth = ({ label = "" }) => {
 						/>
 
 						<Button
+							ref={submitGoogleRef}
 							type='submit'
 							label={`${label} with Google`}
 							className='flex justify-center gap-2 items-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-							functionality={handleSubmit(() => {
+							functionality={() => {
 								authService.signupWithGoogle();
 								setValue("email", "");
 								setValue("password", "");
-								navigate("/");
-							})}
+							}}
 						>
 							<img src={googleIcon} width={30} height={30} />
 						</Button>

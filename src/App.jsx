@@ -52,7 +52,7 @@ const App = () => {
   },[])
 
   return (
-    <UserProvider value={{loggedIn, login, logout, userData}}>
+    <UserProvider value={{loggedIn, login, logout, userData, setUserData}}>
       <BlogProvider value={{blogs, addBlog, updateBlog, deleteBlog}}>
       {
         loading ?
