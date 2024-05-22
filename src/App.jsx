@@ -22,13 +22,13 @@ const App = () => {
 
   const updateBlog = useCallback((documentId, changes={})=>{
     setBlogs(prev => (
-      prev.map(blog => (blog._id == documentId) ? {...blog, ...changes} : blog)
+      prev.map(blog => (blog.$id == documentId) ? {...blog, ...changes} : blog)
     ))
   },[])
   
   const deleteBlog = useCallback((documentId)=>{
     setBlogs(prev => (
-      prev.filter(blog => blog._id != documentId)
+      prev.filter(blog => blog.$id != documentId)
     ))
   },[])
 

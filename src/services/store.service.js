@@ -10,7 +10,7 @@ class Store{
         .setEndpoint(env.apiEndpoint)
         .setProject(env.projectId)
 
-        this.storage = Storage(this.client)
+        this.storage = new Storage(this.client)
     }
 
     async uploadFile({file}){
