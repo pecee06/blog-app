@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import { UserProvider, BlogProvider } from "./contexts/contexts"
 import { useState, useCallback, useEffect } from "react"
 import {authService} from "./services/services"
+import {Container} from "./components/components"
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -55,7 +56,9 @@ const App = () => {
       <BlogProvider value={{blogs, addBlog, updateBlog, deleteBlog}}>
       {
         loading ?
-        <h1>Loading...</h1>
+        <Container className="flex justify-center items-center">
+          <h1 className="text-3xl font-bold">Loading...</h1>
+        </Container>
         :
         <Outlet/>
       }
