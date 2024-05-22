@@ -7,5 +7,7 @@ import Container from "./Container";
 import Logo from "./Logo";
 import Auth from "./Auth";
 import Input from "./Input";
+import Posts from "./Posts";
+import Blog from "./Blog";
 
-export {Header, Footer, Button, Landing, Hero, Container, Logo, Auth, Input}
+export {Header, Footer, Button, Landing, Hero, Container, Logo, Auth, Input, Posts, Blog}

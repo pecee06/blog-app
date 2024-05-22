@@ -57,7 +57,9 @@ const App = () => {
       {
         loading ?
         <Container className="flex justify-center items-center">
-          <h1 className="text-3xl font-bold">Loading...</h1>
+          <h1 className="font-bold h-fit" style={{
+            fontSize: "5vmax"
+          }}>Loading...</h1>
         </Container>
         :
         <Outlet/>
