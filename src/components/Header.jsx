@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate()
 
   return (
-    <nav className="flex justify-between items-center">
+    <nav className="flex justify-between items-center rounded-lg shadow m-4 px-4 py-2">
         <Logo/>
         {
           loggedIn?

@@ -18,7 +18,6 @@ const Footer = () => {
 					<li className='hover:underline me-4 md:me-6 cursor-pointer'>About</li>
 					<li className='hover:underline me-4 md:me-6 cursor-pointer'>Privacy Policy</li>
 					<li className='hover:underline me-4 md:me-6 cursor-pointer'>Licensing</li>
-					<li className='hover:underline me-4 md:me-6 cursor-pointer'>About</li>
 				</ul>
 			</div>
 		</footer>
