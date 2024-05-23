@@ -18,7 +18,15 @@ const App = () => {
   }
 
   const addBlog = useCallback((blog={})=>{
-    setBlogs(prev => [...prev, blog])
+    setBlogs(prev => {
+      let canAdd = true
+      prev.forEach(obj => {
+        if (obj.$id == blog.$id)
+            canAdd = false
+      })
+      if (canAdd) return [...prev, blog]
+      return prev
+    })
   },[])
 
   const updateBlog = useCallback((documentId, changes={})=>{

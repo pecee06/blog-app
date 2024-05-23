@@ -56,7 +56,7 @@ class Store{
                 env.bucketId,
                 fileId
             )
-            return res
+            return res.toString()
         } catch (error) {
             throw error
         }

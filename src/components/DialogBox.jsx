@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Container, Input, Button, RTE } from "./components";
 import { useUserContext } from "../contexts/user.context";
 import { useBlogContext } from "../contexts/blog.context";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import dbService from "../services/db.service";
 import storeService from "../services/store.service";
 
@@ -49,43 +49,46 @@ const DialogBox = () => {
 					<p className='text-red-600'>{errors.content?.message}</p>
 				</div>
 
-				<Button
-					label='Publish'
-					className='p-2 self-end'
-					functionality={handleSubmit((formData) => {
-						storeService
-							.uploadFile({ file: formData.featuredImage[0] })
-							.then((res) => {
-								dbService
-									.insert({
-										title: formData.title,
-										content: formData.content,
-										featuredImage: res.$id,
-										userId: userData.$id,
-									})
-									.then((doc) => {
-										addBlog({
-											$id: doc.$id,
-											title: doc.title,
-											content: doc.content,
-											status: doc.status,
-											userId: doc.userId,
+				<div className="flex justify-between">
+					<Link to="/" className="text-violet-800" >Return to Posts</Link>
+					<Button
+						label='Publish'
+						className='p-2'
+						functionality={handleSubmit((formData) => {
+							storeService
+								.uploadFile({ file: formData.featuredImage[0] })
+								.then((res) => {
+									dbService
+										.insert({
+											title: formData.title,
+											content: formData.content,
+											featuredImage: res.$id,
+											userId: userData.$id,
+										})
+										.then((doc) => {
+											addBlog({
+												$id: doc.$id,
+												title: doc.title,
+												content: doc.content,
+												status: doc.status,
+												userId: doc.userId,
+											})
+										})
+										.catch((err) => {
+											alert(err.message);
+										})
+										.finally(() => {
+											setValue("title", "");
+											setValue("featuredImage", "");
+											setValue("content", "");
 										});
-									})
-									.catch((err) => {
-										alert(err.message);
-									})
-									.finally(() => {
-										setValue("title", "");
-										setValue("featuredImage", "");
-										setValue("content", "");
-									});
-							})
-							.catch((err) => {
-								alert(err.message);
-							});
-					})}
-				/>
+								})
+								.catch((err) => {
+									alert(err.message);
+								})
+						})}
+					/>
+				</div>
 			</form>
 		</Container>
 	);
