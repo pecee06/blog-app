@@ -3,7 +3,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import env from '../../env'
 import { Controller } from 'react-hook-form'
 
-const RTE = ({name="content", control}) => {
+const RTE = ({name="content", control, initialValue=""}) => {
   return (
     <Controller
         name={name}
@@ -16,7 +16,7 @@ const RTE = ({name="content", control}) => {
         }}
         render={({field: {onChange}})=>(
             <Editor
-                initialValue=''
+                initialValue={initialValue}
                 onEditorChange={onChange}
                 apiKey={env.RTE_API_KEY}
                 init={{

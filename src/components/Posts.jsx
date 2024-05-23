@@ -29,7 +29,7 @@ const Posts = () => {
         <div className="grid grid-cols-3 gap-10 justify-items-center">
             {
                 blogs.map((blog, index) => (
-                    <Post key={index} title={blog.title} featuredImage={blog.featuredImage} content={blog.content} status={blog.status} />
+                    <Post key={index} blog={blog} />
                 ))
             }
         </div>

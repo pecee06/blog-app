@@ -14,7 +14,7 @@ const Header = () => {
         {
           loggedIn?
           <div className="flex gap-10">
-            <div className="bg-gray-300 px-4 py-1 rounded-xl flex flex-col items-center">
+            <div className="bg-gray-100 px-4 py-1 rounded-xl flex flex-col items-center">
               <img src={userIcon} width={25} />
               <span>{userData.name || "User"}</span>
             </div>

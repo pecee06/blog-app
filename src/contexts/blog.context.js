@@ -8,12 +8,14 @@ const BlogContext = createContext({
         //     content: "",
         //     status: "",
         //     featuredImage: "",
-        //     userId: ""
+        //     userId: ""   // -> userData.$id
         // }
     ],
+    currentBlog: {},
+    setCurrentBlog: ()=>{},
     addBlog: (blog)=>{},
-    updateBlog: (documentId, changes)=>{},
-    deleteBlog: ()=>{}
+    editBlog: (documentId, changes)=>{},
+    deleteBlog: (documentId)=>{}
 })
 
 const BlogProvider = BlogContext.Provider

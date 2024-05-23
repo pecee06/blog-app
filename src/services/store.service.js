@@ -26,18 +26,6 @@ class Store{
         }
     }
 
-    async fetchFile({fileId}){
-        try {
-            const res = await this.storage.getFile(
-                env.bucketId,
-                fileId
-            )
-            return res
-        } catch (error) {
-            throw error
-        }
-    }
-
     async deleteFile({fileId}){
         try {
             const res = await this.storage.deleteFile(

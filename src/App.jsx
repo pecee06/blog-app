@@ -7,6 +7,7 @@ import {Container} from "./components/components"
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [blogs, setBlogs] = useState([])
+  const [currentBlog, setCurrentBlog] = useState({})
   const [userData, setUserData] = useState({})
   const [loading, setLoading] = useState(true)
 
@@ -29,7 +30,7 @@ const App = () => {
     })
   },[])
 
-  const updateBlog = useCallback((documentId, changes={})=>{
+  const editBlog = useCallback((documentId, changes={})=>{
     setBlogs(prev => (
       prev.map(blog => (blog.$id == documentId) ? {...blog, ...changes} : blog)
     ))
@@ -61,7 +62,7 @@ const App = () => {
 
   return (
     <UserProvider value={{loggedIn, login, logout, userData, setUserData}}>
-      <BlogProvider value={{blogs, addBlog, updateBlog, deleteBlog}}>
+      <BlogProvider value={{blogs, addBlog, editBlog, deleteBlog, currentBlog, setCurrentBlog}}>
       {
         loading ?
         <Container className="flex justify-center items-center">

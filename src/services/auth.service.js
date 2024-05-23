@@ -50,15 +50,6 @@ class Auth{
         }
     }
 
-    async changePassword({oldPassword="", newPassword=""}){
-        try {
-            const res = await this.account.updatePassword(newPassword, oldPassword)
-            return res
-        } catch (error) {
-            throw error
-        }
-    }
-
     async logout(){
         try {
             const res = await this.account.deleteSessions()

@@ -40,19 +40,6 @@ class DB{
         }
     }
 
-    async fetchOne({documentId}){
-        try {
-            const res = this.databases.getDocument(
-                env.dbId,
-                env.collectionId,
-                documentId
-            )
-            return res
-        } catch (error) {
-            throw error
-        }
-    }
-
     async update({documentId, changes={}}){
         try {
             const res = this.databases.updateDocument(
