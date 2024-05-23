@@ -5,7 +5,6 @@ import { googleIcon } from "../assets/assets";
 import authService from "../services/auth.service";
 import { useUserContext } from "../contexts/user.context";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
 
 const Auth = ({ label = "" }) => {
 	const { register, handleSubmit, setValue, formState } = useForm({
@@ -17,10 +16,6 @@ const Auth = ({ label = "" }) => {
 	const { errors } = formState;
 	const { login, setUserData } = useUserContext();
 	const navigate = useNavigate();
-	const emailRef = useRef(null);
-	const passRef = useRef(null);
-	const submitMailRef = useRef(null);
-	const submitGoogleRef = useRef(null);
 
 	return (
 		<Container className='flex flex-col gap-[5vw]'>
@@ -35,7 +30,6 @@ const Auth = ({ label = "" }) => {
 					<form className='space-y-4 md:space-y-6' noValidate>
 						<div className='flex flex-col gap-1'>
 							<Input
-								ref={emailRef}
 								label='Email'
 								type='email'
 								{...register("email", {
@@ -54,7 +48,6 @@ const Auth = ({ label = "" }) => {
 
 						<div className='flex flex-col gap-1'>
 							<Input
-								ref={passRef}
 								label='Password'
 								type='password'
 								placeholder='••••••••'
@@ -66,15 +59,14 @@ const Auth = ({ label = "" }) => {
 									pattern: {
 										value:
 											/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,15}$/,
-										message: "Enter a strong password",
+										message: "Enter a strong password (uppercase, lowercase, special-characters, numbers)",
 									},
 								})}
 							/>
-							<p className='text-red-600'>{errors.email?.message}</p>
+							<p className='text-red-600'>{errors.password?.message}</p>
 						</div>
 
 						<Button
-							ref={submitMailRef}
 							type='submit'
 							className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
 							label={label}
@@ -126,7 +118,6 @@ const Auth = ({ label = "" }) => {
 						/>
 
 						<Button
-							ref={submitGoogleRef}
 							type='submit'
 							label={`${label} with Google`}
 							className='flex justify-center gap-2 items-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'

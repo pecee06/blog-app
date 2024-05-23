@@ -16,7 +16,7 @@ const Posts = () => {
 
   return (
     <main>
-        
+        POSTS
     </main>
   )
 }

@@ -14,7 +14,7 @@ const Header = () => {
         {
           loggedIn?
           <div className="flex gap-3">
-            <img src={userIcon} width={20} height={20} className="bg-violet-800 p-4 rounded-lg" />
+            <img src={userIcon} width={30} />
             <Button label="Logout" functionality={()=>{
               authService.logout()
               .then(res => {
