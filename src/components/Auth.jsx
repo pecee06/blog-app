@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Auth = ({ label = "" }) => {
 	const { register, handleSubmit, setValue, formState } = useForm({
 		defaultValues: {
+			name: "",
 			email: "",
 			password: "",
 		},

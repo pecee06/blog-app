@@ -9,5 +9,7 @@ import Auth from "./Auth";
 import Input from "./Input";
 import Posts from "./Posts";
 import Blog from "./Blog";
+import DialogBox from "./DialogBox";
+import RTE from "./RTE";
 
-export {Header, Footer, Button, Landing, Hero, Container, Logo, Auth, Input, Posts, Blog}
+export {Header, Footer, Button, Landing, Hero, Container, Logo, Auth, Input, Posts, Blog, DialogBox, RTE}

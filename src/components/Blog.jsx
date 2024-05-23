@@ -1,4 +1,4 @@
-const Blog = () => {
+const Blog = ({title, content, featuredImage}) => {
   return (
     <div>Blog</div>
   )
