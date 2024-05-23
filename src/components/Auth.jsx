@@ -25,7 +25,7 @@ const Auth = ({ label = "" }) => {
 					<h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
 						{label == "signup"
 							? "Create a new Account"
-							: "Sign In to ypur Account"}
+							: "Sign In to your Account"}
 					</h1>
 					<form className='space-y-4 md:space-y-6' noValidate>
 						{

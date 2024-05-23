@@ -9,13 +9,16 @@ const Header = () => {
   const navigate = useNavigate()
 
   return (
-    <nav className="flex justify-between items-center rounded-lg shadow m-4 px-4 py-2">
+    <nav className="flex justify-between items-center rounded-lg shadow m-4 p-4">
         <Logo/>
         {
           loggedIn?
-          <div className="flex gap-3">
-            <img src={userIcon} width={30} />
-            <Button label="Logout" functionality={()=>{
+          <div className="flex gap-10">
+            <div className="bg-gray-300 px-4 py-1 rounded-xl flex flex-col items-center">
+              <img src={userIcon} width={25} />
+              <span>{userData.name || "User"}</span>
+            </div>
+            <Button label="Logout" className="px-4" functionality={()=>{
               authService.logout()
               .then(res => {
                 if (res) logout()
@@ -27,10 +30,10 @@ const Header = () => {
           </div>
           :
           <div className="flex gap-3">
-            <Button label="Signup" functionality={()=>{
+            <Button label="Signup" className="p-2" functionality={()=>{
               navigate("/signup")
             }} />
-            <Button label="Sign In" functionality={()=>{
+            <Button label="Sign In" className="p-2" functionality={()=>{
               navigate("/signin")
             }} />
           </div>

@@ -36,9 +36,9 @@ const App = () => {
   // Checking whether the user is already logged in (from previous session)
   useEffect(()=>{
     authService.getCurrentUser()
-    .then(data => {
-      if (data){
-        setUserData(data)
+    .then(res => {
+      if (res){
+        setUserData(res)
         login()
       }
       else logout()
