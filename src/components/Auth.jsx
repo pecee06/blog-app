@@ -28,6 +28,23 @@ const Auth = ({ label = "" }) => {
 							: "Sign In to ypur Account"}
 					</h1>
 					<form className='space-y-4 md:space-y-6' noValidate>
+						{
+							label=="signup" &&
+							<div className='flex flex-col gap-1'>
+								<Input
+									label='Name'
+									type='text'
+									{...register("name", {
+										required: {
+											value: true,
+											message: "This is a required field",
+										}
+									})}
+								/>
+								<p className='text-red-600'>{errors.name?.message}</p>
+							</div>
+						}
+
 						<div className='flex flex-col gap-1'>
 							<Input
 								label='Email'
@@ -76,6 +93,7 @@ const Auth = ({ label = "" }) => {
 										.signup({
 											email: formData.email,
 											password: formData.password,
+											name: formData.name
 										})
 										.then((res) => {
 											if (res) {
@@ -85,7 +103,7 @@ const Auth = ({ label = "" }) => {
 											}
 										})
 										.catch((err) => {
-											console.error(err);
+											alert(err.message);
 											// Hot Toast
 										})
 										.finally(() => {
@@ -106,7 +124,7 @@ const Auth = ({ label = "" }) => {
 											}
 										})
 										.catch((err) => {
-											console.error(err);
+											alert(err.message);
 											// Hot Toast
 										})
 										.finally(() => {

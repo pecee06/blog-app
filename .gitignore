@@ -26,4 +26,3 @@ dist-ssr
 # Added
 appwrite.png
 .env
-client_secret.json

@@ -13,9 +13,9 @@ class Auth{
         this.account = new Account(this.client)
     }
 
-    async signup({email="", password=""}){
+    async signup({email="", password="", name=""}){
         try {
-            const res = await this.account.create(ID.unique(), email, password)
+            const res = await this.account.create(ID.unique(), email, password, name)
             if (res) this.login({email, password})
             return res
         } catch (error) {
@@ -24,7 +24,12 @@ class Auth{
     }
 
     signupWithGoogle(){
-        this.account.createOAuth2Session(OAuthProvider.Google)
+        const successURL = "http://localhost:5173/", failureURL = "http://localhost:5173/signup"
+        this.account.createOAuth2Session(
+            OAuthProvider.Google,
+            successURL,
+            failureURL
+        )
     }
 
     async login({email="", password=""}){
