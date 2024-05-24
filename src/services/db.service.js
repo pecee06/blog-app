@@ -13,7 +13,7 @@ class DB{
         this.databases = new Databases(this.client)
     }
 
-    async insert({title, content, status="active", featuredImage, userId}){
+    async insert({title, content, status=true, featuredImage, userId}){
         try {
             const res = await this.databases.createDocument(
                 env.dbId,

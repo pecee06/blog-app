@@ -28,9 +28,14 @@ const Posts = () => {
         </div>
         <div className="grid grid-cols-3 gap-10 justify-items-center">
             {
+                blogs.length > 0?
                 blogs.map((blog, index) => (
                     <Post key={index} blog={blog} />
                 ))
+                :
+                <h2 className="font-bold" style={{
+                    fontSize: "2vmax"
+                }}>No Blogs Added</h2>
             }
         </div>
     </main>

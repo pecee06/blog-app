@@ -63,7 +63,7 @@ const DialogBox = () => {
 											title: formData.title,
 											content: formData.content,
 											featuredImage: res.$id,
-											userId: userData.$id,
+											userId: userData.userId || userData.$id,
 										})
 										.then((doc) => {
 											addBlog({

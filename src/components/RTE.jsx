@@ -14,9 +14,10 @@ const RTE = ({name="content", control, initialValue=""}) => {
                 message: "This is a required field"
             }
         }}
-        render={({field: {onChange}})=>(
+        render={({field: {onChange, value}})=>(
             <Editor
                 initialValue={initialValue}
+                value={value}
                 onEditorChange={onChange}
                 apiKey={env.RTE_API_KEY}
                 init={{
