@@ -1,9 +1,9 @@
-## Table of Contents
+# Table of Contents
 
-* Features
-* Installation
-* Usage
-* Contributing
+* [Features](#features)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
 
 ## Features
 
