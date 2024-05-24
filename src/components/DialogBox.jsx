@@ -132,7 +132,7 @@ const DialogBox = () => {
 					</Link>
 					<Button
 						label={currentBlog.$id ? "Save" : "Publish"}
-						className='p-2'
+						className='p-2 bg-violet-700 hover:bg-violet-800'
 						functionality={handleSubmit((formData) => {
 							if (!currentBlog.$id) uploadBlogHandler(formData);
 							else {

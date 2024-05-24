@@ -87,7 +87,7 @@ const Auth = ({ label = "" }) => {
 
 						<Button
 							type='submit'
-							className='w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
+							className='flex justify-center gap-2 items-center w-full focus:ring-4 focus:outline-none font-medium text-sm px-5 py-2.5 text-center bg-violet-700 hover:bg-violet-800'
 							label={label}
 							functionality={handleSubmit((formData) => {
 								if (label == "signup") {
@@ -140,7 +140,7 @@ const Auth = ({ label = "" }) => {
 						<Button
 							type='submit'
 							label={`${label} with Google`}
-							className='flex justify-center gap-2 items-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
+							className='flex justify-center gap-2 items-center w-full focus:ring-4 focus:outline-none font-medium text-sm px-5 py-2.5 text-center bg-violet-700 hover:bg-violet-800'
 							functionality={() => {
 								authService.signupWithGoogle({
 									home: env.HOME

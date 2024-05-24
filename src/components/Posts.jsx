@@ -26,9 +26,9 @@ const Posts = () => {
   return (
     <main className="min-h-[58vh] flex flex-col gap-10">
         <div className="flex justify-end">
-            <Button label="+ Create Post" functionality={()=>{
+            <Button label="Create Post" functionality={()=>{
                 navigate("/create-post")
-            }} className="bg-orange-400 hover:bg-orange-500 text-white p-2" />
+            }} className="bg-orange-400 hover:bg-orange-500 text-white py-2 px-4" />
         </div>
         <div className="grid grid-cols-3 gap-10 justify-items-center">
             {

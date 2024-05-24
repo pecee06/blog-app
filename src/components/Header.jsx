@@ -18,7 +18,7 @@ const Header = () => {
               <img src={userIcon} width={25} />
               <span>{userData.name || "User"}</span>
             </div>
-            <Button label="Logout" className="px-4" functionality={()=>{
+            <Button label="Logout" className="px-4 bg-violet-700 hover:bg-violet-800" functionality={()=>{
               authService.logout()
               .then(res => {
                 if (res) logout()
@@ -30,10 +30,10 @@ const Header = () => {
           </div>
           :
           <div className="flex gap-3">
-            <Button label="Signup" className="p-2" functionality={()=>{
+            <Button label="Signup" className="p-2 bg-violet-700 hover:bg-violet-800" functionality={()=>{
               navigate("/signup")
             }} />
-            <Button label="Sign In" className="p-2" functionality={()=>{
+            <Button label="Sign In" className="p-2 bg-violet-700 hover:bg-violet-800" functionality={()=>{
               navigate("/signin")
             }} />
           </div>

@@ -62,10 +62,10 @@ const Blog = () => {
             </div>
             {writeAccess &&
                 <div className="self-end bg-violet-100 px-1 py-2 rounded">
-                    <Button disabled={!currentBlog.status} label="Edit" className={`p-2 mx-2 bg-yellow-400 text-black hover:bg-yellow-500 ${!currentBlog.status && "bg-gray-500 hover:bg-gray-500"}`} functionality={()=>{
+                    <Button disabled={!currentBlog.status} label="Edit" className={`p-2 mx-2  text-black ${currentBlog.status ? "bg-yellow-400 hover:bg-yellow-500" : "bg-gray-500 hover:bg-gray-500"}`} functionality={()=>{
                         navigate("/create-post")
                     }}/>
-                    <Button disabled={!currentBlog.status} label="Delete" className={`p-2 mx-2 bg-red-600 hover:bg-red-700 ${!currentBlog.status && "bg-gray-500 hover:bg-gray-500"}`} functionality={()=>{
+                    <Button disabled={!currentBlog.status} label="Delete" className={`p-2 mx-2 ${currentBlog.status ? "bg-red-600 hover:bg-red-700" : "bg-gray-500 hover:bg-gray-500"}`} functionality={()=>{
                         let toDelete = confirm("This will delete your blog permanently\nClick OK to proceed")
                         if (!toDelete) return
                         storeService.deleteFile({fileId: currentBlog.featuredImage})
