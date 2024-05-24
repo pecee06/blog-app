@@ -4,7 +4,8 @@ const env = {
     dbId: import.meta.env.VITE_DB_ID,
     collectionId: import.meta.env.VITE_BLOG_COLLECTION_ID,
     bucketId: import.meta.env.VITE_BUCKET_ID,
-    RTE_API_KEY: import.meta.env.VITE_TINY_MCE_API_KEY
+    RTE_API_KEY: import.meta.env.VITE_TINY_MCE_API_KEY,
+    HOME: import.meta.env.VITE_HOME_URL
 }
 
 export default env

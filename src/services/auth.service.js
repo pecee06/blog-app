@@ -23,8 +23,8 @@ class Auth{
         }
     }
 
-    signupWithGoogle(){
-        const successURL = "http://localhost:5173/", failureURL = "http://localhost:5173/signup"
+    signupWithGoogle({home}){
+        const successURL = `${home}`, failureURL = `${home}/signup`
         this.account.createOAuth2Session(
             OAuthProvider.Google,
             successURL,

@@ -5,6 +5,7 @@ import { googleIcon } from "../assets/assets";
 import authService from "../services/auth.service";
 import { useUserContext } from "../contexts/user.context";
 import { useNavigate } from "react-router-dom";
+import env from "../../env";
 
 const Auth = ({ label = "" }) => {
 	const { register, handleSubmit, setValue, formState } = useForm({
@@ -141,7 +142,9 @@ const Auth = ({ label = "" }) => {
 							label={`${label} with Google`}
 							className='flex justify-center gap-2 items-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
 							functionality={() => {
-								authService.signupWithGoogle();
+								authService.signupWithGoogle({
+									home: env.HOME
+								});
 								setValue("email", "");
 								setValue("password", "");
 							}}
