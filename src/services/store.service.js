@@ -38,6 +38,18 @@ class Store{
         }
     }
 
+    async fetchFile({fileId}){
+        try {
+            const res = await this.storage.getFile(
+                env.bucketId,
+                fileId
+            )
+            return res
+        } catch (error) {
+            throw error
+        }
+    }
+
     fetchFilePreview({fileId}){
         try {
             const res = this.storage.getFilePreview(

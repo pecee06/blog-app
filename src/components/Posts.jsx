@@ -5,7 +5,7 @@ import {Button, Post} from "./components"
 import { useNavigate } from "react-router-dom"
 
 const Posts = () => {
-    const {blogs, addBlog} = useBlogContext()
+    const {blogs, addBlog, setCurrentBlog} = useBlogContext()
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -14,8 +14,12 @@ const Posts = () => {
             res.documents.forEach(blog => {
                 addBlog(blog)
             })
-        }).catch(err => {
+        })
+        .catch(err => {
             console.error(err);
+        })
+        .finally(()=>{
+            setCurrentBlog({})
         })
     },[])
 

@@ -16,14 +16,14 @@ const Blog = () => {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if (!currentBlog.featuredImage) navigate("/")
+        if (!currentBlog.$id) navigate("/")
         else{
             const res = storeService.fetchFilePreview({fileId: currentBlog.featuredImage})
             setUrl(res)
         }
     },[])
 
-    if (!loggedIn) return <Navigate to="/" />
+    if (!loggedIn || !currentBlog.$id) return <Navigate to="/" />
     return(
         <Container className="flex flex-col gap-6">
             <Header/>
@@ -63,7 +63,7 @@ const Blog = () => {
             {writeAccess &&
                 <div className="self-end bg-violet-100 px-1 py-2 rounded">
                     <Button disabled={!currentBlog.status} label="Edit" className={`p-2 mx-2 bg-yellow-400 text-black hover:bg-yellow-500 ${!currentBlog.status && "bg-gray-500 hover:bg-gray-500"}`} functionality={()=>{
-                        // Edit blog
+                        navigate("/create-post")
                     }}/>
                     <Button disabled={!currentBlog.status} label="Delete" className={`p-2 mx-2 bg-red-600 hover:bg-red-700 ${!currentBlog.status && "bg-gray-500 hover:bg-gray-500"}`} functionality={()=>{
                         let toDelete = confirm("This will delete your blog permanently\nClick OK to proceed")
